@@ -1,0 +1,31 @@
+﻿# Виртуальное окружение
+.venv/
+
+# Кэш Python
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Локальные настройки
+.vscode/
+.idea/
+
+# MLflow
+mlruns/
+
+# Временные файлы
+*.tmp
+*.log
+
+# Системные файлы Windows
+Thumbs.db
+Desktop.ini
+
+# Локальные модели и большие результаты
+models/*.pkl
+models/*.joblib
+
+# Локальные результаты
+reports/generated/
