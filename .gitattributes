@@ -1,1 +1,27 @@
-data/raw/*.csv -text
+# Автоматическое определение текстовых файлов
+* text=auto
+
+# LF для исходного кода и конфигурации
+*.py text eol=lf
+*.js text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.toml text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# LF для CSV с производными данными
+*.csv text eol=lf
+
+# CRLF для Windows-скриптов
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Сохранение исходного CSV без преобразования байтов
+data/raw/*.csv -text !eol
