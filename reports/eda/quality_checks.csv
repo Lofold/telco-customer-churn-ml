@@ -1,0 +1,10 @@
+﻿check,result,status
+Количество записей,4225,INFO
+Количество столбцов,21,INFO
+Полные дубликаты строк,0,PASS
+Повторяющиеся customerID,0,PASS
+Пропуски/пустые строки в TotalCharges,7,REVIEW
+tenure вне диапазона [0; 72],0,PASS
+Отрицательные MonthlyCharges,0,PASS
+Отрицательные TotalCharges,0,PASS
+Неожиданные значения Churn,0,PASS

@@ -1,0 +1,22 @@
+﻿feature,meaning,original_dtype,analysis_dtype,unique_values,missing_values,examples
+customerID,Уникальный идентификатор клиента; не использовать как предиктор модели,str,str,4225,0,5993-JSUWV; 6916-HIJSE; 6585-WCEWR
+gender,Пол клиента,str,str,2,0,Female; Male
+SeniorCitizen,Признак пожилого клиента (0/1),int64,int64,2,0,0; 1
+Partner,Наличие партнера/супруга,str,str,2,0,No; Yes
+Dependents,Наличие иждивенцев,str,str,2,0,No; Yes
+tenure,"Продолжительность обслуживания, месяцев",int64,int64,73,0,66; 65; 72
+PhoneService,Подключена ли телефонная услуга,str,str,2,0,Yes; No
+MultipleLines,Наличие нескольких телефонных линий,str,str,3,0,No; No phone service; Yes
+InternetService,Тип интернет-подключения,str,str,3,0,DSL; No; Fiber optic
+OnlineSecurity,Подключена ли онлайн-защита,str,str,3,0,Yes; No internet service; No
+OnlineBackup,Подключено ли онлайн-резервное копирование,str,str,3,0,Yes; No internet service; No
+DeviceProtection,Подключена ли защита оборудования,str,str,3,0,Yes; No internet service; No
+TechSupport,Подключена ли техническая поддержка,str,str,3,0,No; Yes; No internet service
+StreamingTV,Подключен ли стриминг телевидения,str,str,3,0,No; Yes; No internet service
+StreamingMovies,Подключен ли стриминг фильмов,str,str,3,0,No; Yes; No internet service
+Contract,Тип договора,str,str,3,0,Two year; Month-to-month; One year
+PaperlessBilling,Используется ли электронный счет,str,str,2,0,Yes; No
+PaymentMethod,Способ оплаты,str,str,4,0,Bank transfer (automatic); Electronic check; Mailed check
+MonthlyCharges,Ежемесячные начисления клиенту,float64,float64,1365,0,61.15; 84.85; 20.35
+TotalCharges,Суммарные начисления за период обслуживания,str,float64,4004,7,4017.45; 5459.2; 1354.4
+Churn,Целевой признак: факт оттока (Yes/No),str,str,2,0,No; Yes

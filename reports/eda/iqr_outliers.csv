@@ -1,0 +1,4 @@
+﻿feature,q1,q3,iqr,lower_bound,upper_bound,outlier_count,outlier_percent
+tenure,9.0,55.0,46.0,-60.0,124.0,0,0.0
+MonthlyCharges,35.4,90.1,54.699999999999996,-46.65,172.14999999999998,0,0.0
+TotalCharges,402.525,3865.5625,3463.0375,-4792.03125,9060.11875,0,0.0

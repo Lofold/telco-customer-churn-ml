@@ -1,0 +1,13 @@
+{
+  "input_file": "data/initial/initial_60.csv",
+  "rows": 4225,
+  "columns": 21,
+  "duplicate_rows": 0,
+  "duplicate_customer_ids": 0,
+  "missing_cells_after_blank_normalization": 7,
+  "churn_counts": {
+    "No": 3104,
+    "Yes": 1121
+  },
+  "random_state_for_split": 42
+}
