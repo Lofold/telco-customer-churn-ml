@@ -1,0 +1,25 @@
+@startuml c4_container
+left to right direction
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam defaultFontName Arial
+skinparam ArrowColor #526579
+skinparam ArrowThickness 1.3
+skinparam rectangle {
+  BackgroundColor #EAF2F8
+  BorderColor #41627D
+  FontColor #17324D
+}
+actor "Специалист по данным" as analyst
+rectangle "Telco Customer Churn ML project\n[Software System boundary]" as boundary #FFFFFF {
+  rectangle "CLI scripts\n[Container: Python process]\nSplit / EDA / validate / train / predict" as cli #D8EAD7
+  folder "Data store\n[Container: local files]\ndata/raw, initial, incoming, processed" as data #FFF0CC
+  folder "Artifacts and reports\n[Container: local files]\nmodels/ and reports/" as artifacts #F3E5F5
+}
+rectangle "Git / GitHub\n[External development tool]\nSource and change history" as git #E7E7E7
+analyst --> cli : запускает команды
+cli <--> data : читает входы /\nзаписывает подготовленные данные
+cli --> artifacts : пишет отчёты,\nметрики, модель и прогнозы
+analyst --> git : фиксирует и отправляет\nизменения проекта
+cli ..> git : код и конфигурации\nверсируются отдельно
+@enduml

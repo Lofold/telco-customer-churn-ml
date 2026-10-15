@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1150" height="590" viewBox="0 0 1150 590">
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#526579"/></marker></defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="575.0" y="32" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#17324D">C4 Container — логическая структура проекта</text>
+<rect x="250" y="75" width="620" height="450" rx="18" fill="#FAFCFD" stroke="#6B879E" stroke-width="2.5" stroke-dasharray="8 5"/>
+<text x="560" y="103" text-anchor="middle" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#17324D">Telco Customer Churn ML project</text>
+<rect x="25" y="220" width="190" height="100" rx="60" fill="#E7EEF7" stroke="#41627D" stroke-width="2"/>
+<text x="120.0" y="257.0" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="15" fill="#17324D">Специалист</text>
+<text x="120.0" y="283.0" text-anchor="middle" font-family="Arial,sans-serif" font-weight="normal" font-size="13" fill="#17324D">запуск CLI-команд</text>
+<rect x="300" y="140" width="520" height="100" rx="12" fill="#D8EAD7" stroke="#41627D" stroke-width="2"/>
+<text x="560.0" y="164.0" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="15" fill="#17324D">Python CLI scripts</text>
+<text x="560.0" y="190.0" text-anchor="middle" font-family="Arial,sans-serif" font-weight="normal" font-size="13" fill="#17324D">split_data.py, eda_initial.py</text>
+<text x="560.0" y="216.0" text-anchor="middle" font-family="Arial,sans-serif" font-weight="normal" font-size="13" fill="#17324D">будущие: validate / train / predict</text>
+<rect x="295" y="305" width="235" height="145" rx="12" fill="#FFF0CC" stroke="#41627D" stroke-width="2"/>
+<text x="412.5" y="325.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="15" fill="#17324D">Хранилище данных</text>
+<text x="412.5" y="351.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="normal" font-size="13" fill="#17324D">data/raw/</text>
+<text x="412.5" y="377.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="normal" font-size="13" fill="#17324D">data/initial/</text>
+<text x="412.5" y="403.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="normal" font-size="13" fill="#17324D">data/incoming/</text>
+<text x="412.5" y="429.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="normal" font-size="13" fill="#17324D">data/processed/</text>
+<rect x="575" y="305" width="245" height="145" rx="12" fill="#F3E5F5" stroke="#41627D" stroke-width="2"/>
+<text x="697.5" y="338.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="15" fill="#17324D">Артефакты и отчёты</text>
+<text x="697.5" y="364.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="normal" font-size="13" fill="#17324D">models/</text>
+<text x="697.5" y="390.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="normal" font-size="13" fill="#17324D">reports/</text>
+<text x="697.5" y="416.5" text-anchor="middle" font-family="Arial,sans-serif" font-weight="normal" font-size="13" fill="#17324D">метрики и прогнозы</text>
+<rect x="920" y="205" width="200" height="120" rx="12" fill="#E7E7E7" stroke="#41627D" stroke-width="2"/>
+<text x="1020.0" y="226.0" text-anchor="middle" font-family="Arial,sans-serif" font-weight="bold" font-size="15" fill="#17324D">Git / GitHub</text>
+<text x="1020.0" y="252.0" text-anchor="middle" font-family="Arial,sans-serif" font-weight="normal" font-size="13" fill="#17324D">история кода</text>
+<text x="1020.0" y="278.0" text-anchor="middle" font-family="Arial,sans-serif" font-weight="normal" font-size="13" fill="#17324D">конфигурации</text>
+<text x="1020.0" y="304.0" text-anchor="middle" font-family="Arial,sans-serif" font-weight="normal" font-size="13" fill="#17324D">манифесты</text>
+<line x1="215" y1="260" x2="300" y2="190" stroke="#526579" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="257.5" y="217.0" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#34495E">запуск</text>
+<line x1="445" y1="240" x2="410" y2="305" stroke="#526579" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="427.5" y="264.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#34495E">чтение / запись</text>
+<line x1="650" y1="240" x2="700" y2="305" stroke="#526579" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="675.0" y="264.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#34495E">сохранение</text>
+<line x1="820" y1="180" x2="920" y2="235" stroke="#526579" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="870.0" y="199.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#34495E">версирование</text>
+</svg>

@@ -1,0 +1,36 @@
+@startuml sequence_batch_prediction
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceArrowColor #526579
+skinparam sequenceLifeLineBorderColor #7A8A99
+skinparam sequenceParticipantBackgroundColor #EAF2F8
+skinparam sequenceParticipantBorderColor #41627D
+skinparam noteBackgroundColor #FFF0CC
+actor "Специалист" as Analyst
+participant "CLI: predict_batch.py" as CLI
+participant "Проверка данных" as Validator
+database "Файлы проекта\n(data/incoming, models/)" as Files
+participant "Pipeline + model" as Model
+collections "Выходы\n(reports/, predictions.csv)" as Output
+
+Analyst -> CLI : Запустить прогнозирование для batch_XX.csv
+CLI -> Files : Прочитать входной пакет и сохранённую модель
+Files --> CLI : Таблица и артефакт модели
+CLI -> Validator : Проверить схему, типы и допустимые значения
+alt Пакет некорректен
+  Validator --> CLI : Ошибки проверки
+  CLI -> Output : Записать диагностику / остановить обработку
+  Output --> Analyst : Отчёт об ошибках
+else Пакет корректен
+  Validator --> CLI : Пакет принят
+  CLI -> Model : Преобразовать признаки и выполнить predict / predict_proba
+  Model --> CLI : Класс и вероятность Churn=Yes
+  CLI -> Output : Записать прогнозы и сводку обработки
+  Output --> Analyst : Файл прогнозов и отчёт
+end
+note over CLI,Model
+Целевой сценарий: реализация проверки пакетов,
+обученного конвейера и прогнозирования предстоит
+в следующих этапах работы.
+end note
+@enduml

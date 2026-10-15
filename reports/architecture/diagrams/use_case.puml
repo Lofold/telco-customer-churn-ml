@@ -1,0 +1,35 @@
+@startuml use_case
+left to right direction
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam ArrowColor #526579
+skinparam actorStyle awesome
+skinparam usecase {
+  BackgroundColor #EAF2F8
+  BorderColor #41627D
+  FontColor #17324D
+}
+actor "Специалист по данным /\nML-разработчик" as analyst
+rectangle "Система анализа и прогнозирования оттока" {
+  usecase "Подготовить исходную\nвыборку и пакеты" as UC1
+  usecase "Проверить качество\nвходящего пакета" as UC2
+  usecase "Провести EDA\nи сохранить отчёты" as UC3
+  usecase "Сформировать признаки\nи конвейер обработки" as UC4
+  usecase "Обучить модель\nклассификации" as UC5
+  usecase "Оценить модель\nпо KPI" as UC6
+  usecase "Получить пакетные\nпрогнозы оттока" as UC7
+  usecase "Сохранить метрики\nи результаты" as UC8
+}
+analyst --> UC1
+analyst --> UC2
+analyst --> UC3
+analyst --> UC4
+analyst --> UC5
+analyst --> UC6
+analyst --> UC7
+analyst --> UC8
+UC5 .> UC4 : <<include>>
+UC6 .> UC5 : <<include>>
+UC7 .> UC2 : <<include>>
+UC6 .> UC8 : <<include>>
+@enduml

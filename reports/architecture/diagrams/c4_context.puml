@@ -1,0 +1,24 @@
+@startuml c4_context
+left to right direction
+skinparam shadowing false
+skinparam roundcorner 14
+skinparam packageStyle rectangle
+skinparam defaultFontName Arial
+skinparam ArrowColor #526579
+skinparam ArrowThickness 1.4
+skinparam rectangle {
+  BackgroundColor #EAF2F8
+  BorderColor #41627D
+  FontColor #17324D
+}
+skinparam actorStyle awesome
+
+actor "Специалист по данным\n/ ML-разработчик" as analyst
+rectangle "Система анализа и\nпрогнозирования оттока\n[Software System]\nPython CLI + ML pipeline" as system #D8EAD7
+folder "Предоставленный набор\nTelco Customer Churn\n[External data source]" as source #FFF0CC
+folder "Отчёты, метрики и\nфайл прогнозов\n[Output files]" as outputs #F3E5F5
+
+analyst --> system : запускает сценарии\nи анализирует результаты
+source --> system : CSV исходной\nи входящей выборок
+system --> outputs : сохраняет отчёты\nи результаты модели
+@enduml

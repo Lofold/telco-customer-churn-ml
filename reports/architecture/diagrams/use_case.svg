@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="800" viewBox="0 0 1000 800">
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#526579"/></marker></defs>
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="500" y="32" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="bold" fill="#17324D">UML Use Case — варианты использования</text>
+<rect x="270" y="60" width="690" height="700" rx="16" fill="#FFFFFF" stroke="#6B879E" stroke-width="2.5"/>
+<text x="615" y="88" text-anchor="middle" font-family="Arial,sans-serif" font-size="17" font-weight="bold" fill="#17324D">Система анализа и прогнозирования оттока</text>
+<rect x="25" y="350" width="210" height="100" rx="50" fill="#E7EEF7" stroke="#41627D" stroke-width="2"/>
+<text x="130" y="391" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#17324D">Специалист по данным</text>
+<text x="130" y="415" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#17324D">/ ML-разработчик</text>
+<line x1="235" y1="400" x2="355" y2="125" stroke="#526579" stroke-width="1.5"/>
+<ellipse cx="625" cy="125" rx="270" ry="29" fill="#EAF2F8" stroke="#41627D" stroke-width="2"/>
+<text x="625" y="122" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#17324D">Подготовить исходную выборку</text>
+<text x="625" y="139" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#17324D">и входящие пакеты</text>
+<line x1="235" y1="400" x2="355" y2="207" stroke="#526579" stroke-width="1.5"/>
+<ellipse cx="625" cy="207" rx="270" ry="29" fill="#EAF2F8" stroke="#41627D" stroke-width="2"/>
+<text x="625" y="204" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#17324D">Проверить качество</text>
+<text x="625" y="221" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#17324D">входящего пакета</text>
+<line x1="235" y1="400" x2="355" y2="289" stroke="#526579" stroke-width="1.5"/>
+<ellipse cx="625" cy="289" rx="270" ry="29" fill="#EAF2F8" stroke="#41627D" stroke-width="2"/>
+<text x="625" y="286" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#17324D">Провести EDA и сохранить</text>
+<text x="625" y="303" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#17324D">отчёты</text>
+<line x1="235" y1="400" x2="355" y2="371" stroke="#526579" stroke-width="1.5"/>
+<ellipse cx="625" cy="371" rx="270" ry="29" fill="#EAF2F8" stroke="#41627D" stroke-width="2"/>
+<text x="625" y="368" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#17324D">Сформировать признаки</text>
+<text x="625" y="385" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#17324D">и конвейер обработки</text>
+<line x1="235" y1="400" x2="355" y2="453" stroke="#526579" stroke-width="1.5"/>
+<ellipse cx="625" cy="453" rx="270" ry="29" fill="#EAF2F8" stroke="#41627D" stroke-width="2"/>
+<text x="625" y="450" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#17324D">Обучить модель</text>
+<text x="625" y="467" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#17324D">классификации</text>
+<line x1="235" y1="400" x2="355" y2="535" stroke="#526579" stroke-width="1.5"/>
+<ellipse cx="625" cy="535" rx="270" ry="29" fill="#EAF2F8" stroke="#41627D" stroke-width="2"/>
+<text x="625" y="532" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#17324D">Оценить модель по KPI</text>
+<text x="625" y="549" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#17324D">и сохранить метрики</text>
+<line x1="235" y1="400" x2="355" y2="617" stroke="#526579" stroke-width="1.5"/>
+<ellipse cx="625" cy="617" rx="270" ry="29" fill="#EAF2F8" stroke="#41627D" stroke-width="2"/>
+<text x="625" y="614" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#17324D">Получить пакетные</text>
+<text x="625" y="631" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#17324D">прогнозы оттока</text>
+<line x1="235" y1="400" x2="355" y2="699" stroke="#526579" stroke-width="1.5"/>
+<ellipse cx="625" cy="699" rx="270" ry="29" fill="#EAF2F8" stroke="#41627D" stroke-width="2"/>
+<text x="625" y="696" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#17324D">Сохранить прогнозы</text>
+<text x="625" y="713" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" fill="#17324D">и сводку обработки</text>
+<text x="615" y="738" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#526579">Связи include в исходнике PlantUML: обучение включает формирование признаков;</text>
+<text x="615" y="753" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#526579">прогнозирование включает проверку данных; оценка включает сохранение метрик.</text>
+</svg>
