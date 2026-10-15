@@ -1,0 +1,12 @@
+step_id,stage,input,action,output,acceptance_check
+1,Configuration,"run parameters; requirements.txt","Set random seed 42, relative paths, feature list and split configuration","Reproducible run configuration","Seed and configuration are recorded"
+2,Source integrity,"raw CSV; reports/data_manifest.csv","Check SHA-256, schema, column order and row count; never overwrite source","Verified immutable source or diagnostic error","SHA-256 matches the source manifest"
+3,Dataset routing,"data/initial/initial_60.csv; data/incoming/batch_*.csv","Check files and schemas; keep incoming batches isolated from initial training data","Initial dataset and separate incoming batches","No automatic merging of incoming batches into training"
+4,Normalization,"initial dataset or current batch","Convert empty strings to missing values and convert TotalCharges to numeric with conversion diagnostics","Normalized working copy and quality report","Raw CSV remains unchanged"
+5,Quality checks,"Normalized data","Check schema, customerID uniqueness, duplicates, categories, numeric ranges and missing values","Quality report and valid/rejected record status","Out-of-contract values are logged"
+6,Target separation,"Initial dataset with Churn","Keep customerID for traceability, exclude it from predictors, separate Churn as target","Feature matrix X and target y","Churn and customerID are absent from X"
+7,Development split,"X and y from initial dataset","Create stratified train/validation split using random_state=42","Train and validation subsets","Subsets do not overlap and class balance is preserved"
+8,Feature pipeline,"Train/validation data and feature schema","Create candidate engineered features; fit imputer/encoder/scaler on train only","Transformed matrices with consistent schema","No transformation is fitted on validation data"
+9,Model experiment,"Training matrix and y_train; validation matrix and y_validation","Compare baseline and engineered-feature variants; calculate Recall, ROC-AUC and F1","Metrics report and experiment configuration","Metrics are measured rather than assumed"
+10,Batch inference,"Incoming batch; fitted transformers and model","Validate data, transform with saved objects, predict and store IDs plus prediction outputs separately","Predictions and batch-processing log","Same feature schema as model training"
+11,Delayed-label evaluation,"Predictions and actual Churn when available","Join labels only for evaluation and calculate metrics","Post-arrival evaluation report","Actual target is not used as an inference feature"

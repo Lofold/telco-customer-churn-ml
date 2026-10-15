@@ -1,0 +1,42 @@
+@startuml
+ title ML data preparation and churn prediction pipeline
+ skinparam backgroundColor #FFFFFF
+ skinparam shadowing false
+ skinparam activity {
+   BackgroundColor #EAF2F8
+   BorderColor #315A7D
+   FontColor #172B3A
+   DiamondBackgroundColor #FFF1CC
+   DiamondBorderColor #9A7620
+ }
+ start
+ :Load run configuration;
+ :Verify raw CSV SHA-256 and schema;
+ if (Source valid?) then (yes)
+   :Load initial_60 and select incoming batch;
+   :Normalize empty strings and numeric fields;
+   :Run data-quality checks;
+   if (Quality checks pass?) then (yes)
+     :Separate Churn target and customerID;
+     if (Development/training run?) then (yes)
+       :Create stratified train/validation split\n(random_state=42);
+       :Fit preprocessing on train only;
+       :Create candidate engineered features;
+       :Train baseline and candidate models;
+       :Evaluate Recall, ROC-AUC and F1;
+       :Save metrics, feature schema and configuration;
+     else (incoming batch)
+       :Load saved preprocessing and model;
+       :Apply same transformations;
+       :Generate predictions;
+       :Save predictions and processing log;
+       :Evaluate later if actual Churn labels are available;
+     endif
+   else (no)
+     :Save validation diagnostics\nand stop or isolate invalid records;
+   endif
+ else (no)
+   :Stop and report source integrity failure;
+ endif
+ stop
+@enduml
