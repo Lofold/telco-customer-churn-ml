@@ -1,0 +1,7 @@
+﻿file,rows,columns,sha256,source,random_state
+data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv,7043,21,88be4b93fbe0cc83421af1c503794c97c342eca914c1576db7c276e61d61358a,Original immutable CSV,42
+data/initial/initial_60.csv,4225,21,b2aebbca10e2a5cd7452f05b64b5bf6342d2ba4acdd40a296f0dd696c40d0166,Initial 60 percent sample,42
+data/incoming/batch_01.csv,705,21,0b6aa705b3822971ab966d95ccd19df7e43e5749d4230238adbcfaa0fe637c32,Simulated incoming batch,42
+data/incoming/batch_02.csv,705,21,49ffdb1d0bddd1da2d739653bfe999ab844130137b0838e6c0a6b20de3837475,Simulated incoming batch,42
+data/incoming/batch_03.csv,704,21,3db4ba21fbfcc5ed5cae2abe71107a0433439c085a96a6344e488eb5e8dfe458,Simulated incoming batch,42
+data/incoming/batch_04.csv,704,21,cd4ee4064181c547c76f147de928117acf3af2b03bb24be0946af8cc6d3a687c,Simulated incoming batch,42
