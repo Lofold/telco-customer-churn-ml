@@ -42,7 +42,7 @@
 <polygon class="decision" points="650,790 760,835 650,880 540,835"/>
 <text class="label" x="650" y="829"><tspan x="650">Режим</tspan><tspan x="650" dy="23">запуска?</tspan></text>
 <rect class="process" x="30" y="930" width="550" height="92" rx="17"/>
-<text class="label" x="305" y="958"><tspan x="305">6–7. Отделить customerID и Churn;</tspan><tspan x="305" dy="23">стратифицированно разделить X и y на</tspan><tspan x="305" dy="23">Train / Validation / Test (70 / 15 / 15)</tspan></text>
+<text class="label" x="305" y="958"><tspan x="305">6–7. Отделить customerID и Churn;</tspan><tspan x="305" dy="23">стратифицированно разделить X и y на</tspan><tspan x="305" dy="23">Train / Validation / Test</tspan></text>
 <rect class="process" x="30" y="1045" width="550" height="105" rx="17"/>
 <text class="label" x="305" y="1073"><tspan x="305">8. Сформировать признаки; fit импутера,</tspan><tspan x="305" dy="23">энкодера и скейлера только на Train;</tspan><tspan x="305" dy="23">transform всех трёх выборок без повторного fit</tspan></text>
 <rect class="process" x="30" y="1175" width="550" height="80" rx="17"/>

@@ -19,7 +19,7 @@
    if (Quality checks pass?) then (yes)
      :Separate Churn target and customerID;
      if (Development/training run?) then (yes)
-       :Create stratified train/validation/test split\n(70/15/15, random_state=42);
+       :Create stratified train/validation/test split\n(random_state=42);
        :Fit preprocessing on train only;
        :Create candidate engineered features;
        :Train baseline and candidate models on train;
