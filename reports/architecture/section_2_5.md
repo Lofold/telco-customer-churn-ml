@@ -14,7 +14,7 @@
 
 ![C4 Context: контекст системы](diagrams/c4_context.svg)
 
-Редактируемый исходник: [`c4_context.puml`](diagrams/c4_context.puml).
+Редактируемый исходник: [`c4_context.drawio`](diagrams/c4_context.drawio).
 
 ## Контейнерная диаграмма C4 (Container)
 
@@ -31,7 +31,7 @@
 
 ![C4 Container: контейнеры системы](diagrams/c4_container.svg)
 
-Редактируемый исходник: [`c4_container.puml`](diagrams/c4_container.puml).
+Редактируемый исходник: [`c4_container.drawio`](diagrams/c4_container.drawio).
 
 ## Диаграмма вариантов использования UML (Use Case)
 
@@ -39,7 +39,7 @@
 
 ![UML Use Case: варианты использования](diagrams/use_case.svg)
 
-Редактируемый исходник: [`use_case.puml`](diagrams/use_case.puml).
+Редактируемый исходник: [`use_case.drawio`](diagrams/use_case.drawio).
 
 ## Диаграмма последовательности UML (Sequence)
 
@@ -49,7 +49,7 @@
 
 ![UML Sequence: обработка входящего пакета](diagrams/sequence_batch_prediction.svg)
 
-Редактируемый исходник: [`sequence_batch_prediction.puml`](diagrams/sequence_batch_prediction.puml).
+Редактируемый исходник: [`sequence_batch_prediction.drawio`](diagrams/sequence_batch_prediction.drawio).
 
 ## Архитектурные решения и ограничения
 

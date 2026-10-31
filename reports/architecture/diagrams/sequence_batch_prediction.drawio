@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="app.diagrams.net" agent="OpenAI" version="24.7.17" type="device">
+  <diagram id="sequence-batch-prediction" name="UML Sequence — пакетное прогнозирование оттока">
+    <mxGraphModel dx="1905" dy="1130" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1905" pageHeight="1130" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="UML Sequence — пакетное прогнозирование оттока" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontStyle=1;fontColor=#172B3A;" vertex="1" parent="1">
+          <mxGeometry x="57.15" y="10" width="1790.6999999999998" height="38" as="geometry"/>
+        </mxCell>
+        <mxCell id="analyst" value="Специалист" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2F8;strokeColor=#41627D;fontColor=#172B3A;fontFamily=Arial;fontSize=18;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="77.35" y="85" width="226.1" height="68" as="geometry"/>
+        </mxCell>
+        <mxCell id="cli" value="CLI&lt;br&gt;predict_batch.py" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2F8;strokeColor=#41627D;fontColor=#172B3A;fontFamily=Arial;fontSize=18;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="374.84999999999997" y="85" width="226.1" height="68" as="geometry"/>
+        </mxCell>
+        <mxCell id="validator" value="Проверка&lt;br&gt;данных" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2F8;strokeColor=#41627D;fontColor=#172B3A;fontFamily=Arial;fontSize=18;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="672.35" y="85" width="226.1" height="68" as="geometry"/>
+        </mxCell>
+        <mxCell id="files" value="Файлы проекта&lt;br&gt;data/incoming, models/" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2F8;strokeColor=#41627D;fontColor=#172B3A;fontFamily=Arial;fontSize=18;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="969.8499999999999" y="85" width="226.1" height="68" as="geometry"/>
+        </mxCell>
+        <mxCell id="model" value="Pipeline +&lt;br&gt;model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2F8;strokeColor=#41627D;fontColor=#172B3A;fontFamily=Arial;fontSize=18;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1267.35" y="85" width="226.1" height="68" as="geometry"/>
+        </mxCell>
+        <mxCell id="output" value="Выходы&lt;br&gt;reports/" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#EAF2F8;strokeColor=#41627D;fontColor=#172B3A;fontFamily=Arial;fontSize=18;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1564.85" y="85" width="226.1" height="68" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_frame" value="" style="rounded=1;dashed=1;dashPattern=8 4;fillColor=none;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#A6B1BA;fontColor=#172B3A;fontFamily=Arial;fontSize=15;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="618.8" y="455" width="1154.3" height="570" as="geometry"/>
+        </mxCell>
+        <mxCell id="alt_label" value="alt  Пакет корректен?" style="text;strokeColor=none;fillColor=none;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#526579;fontFamily=Arial;fontSize=16;align=left;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="636.65" y="455" width="535.5" height="27" as="geometry"/>
+        </mxCell>
+        <mxCell id="err_label" value="[нет] — пакет некорректен" style="text;strokeColor=none;fillColor=none;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#B7473E;fontFamily=Arial;fontSize=16;align=left;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="636.65" y="480" width="1142.3999999999999" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="ok_label" value="[иначе] — пакет корректен" style="text;strokeColor=none;fillColor=none;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#23756E;fontFamily=Arial;fontSize=16;align=left;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="636.65" y="695" width="1142.3999999999999" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="note" value="Фактическая метка Churn используется только для последующей оценки,&lt;br&gt;когда она становится доступна; в предикторы она не включается." style="shape=note;whiteSpace=wrap;html=1;fillColor=#FFF4D6;strokeColor=#C59B42;fontColor=#51401A;fontFamily=Arial;fontSize=17;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="261.8" y="1055" width="1380.3999999999999" height="58" as="geometry"/>
+        </mxCell>
+        <mxCell id="life_analyst" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#9AA8B3;strokeWidth=1.3;endArrow=none;endFill=0;dashed=1;dashPattern=8 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190.39999999999998" y="153" as="sourcePoint"/>
+            <mxPoint x="190.39999999999998" y="1035" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="life_cli" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#9AA8B3;strokeWidth=1.3;endArrow=none;endFill=0;dashed=1;dashPattern=8 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="487.9" y="153" as="sourcePoint"/>
+            <mxPoint x="487.9" y="1035" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="life_validator" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#9AA8B3;strokeWidth=1.3;endArrow=none;endFill=0;dashed=1;dashPattern=8 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="785.4" y="153" as="sourcePoint"/>
+            <mxPoint x="785.4" y="1035" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="life_files" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#9AA8B3;strokeWidth=1.3;endArrow=none;endFill=0;dashed=1;dashPattern=8 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1082.8999999999999" y="153" as="sourcePoint"/>
+            <mxPoint x="1082.8999999999999" y="1035" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="life_model" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#9AA8B3;strokeWidth=1.3;endArrow=none;endFill=0;dashed=1;dashPattern=8 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1380.3999999999999" y="153" as="sourcePoint"/>
+            <mxPoint x="1380.3999999999999" y="1035" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="life_output" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#9AA8B3;strokeWidth=1.3;endArrow=none;endFill=0;dashed=1;dashPattern=8 4;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1677.8999999999999" y="153" as="sourcePoint"/>
+            <mxPoint x="1677.8999999999999" y="1035" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m1" value="Запустить predict_batch.py" style="edgeStyle=none;html=1;rounded=0;strokeColor=#315A7D;strokeWidth=1.9;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190.39999999999998" y="205" as="sourcePoint"/>
+            <mxPoint x="487.9" y="205" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2" value="Загрузить batch и модель" style="edgeStyle=none;html=1;rounded=0;strokeColor=#315A7D;strokeWidth=1.9;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="487.9" y="280" as="sourcePoint"/>
+            <mxPoint x="1082.8999999999999" y="280" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m3" value="Данные и модель" style="edgeStyle=none;html=1;rounded=0;strokeColor=#526579;strokeWidth=1.9;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1082.8999999999999" y="345" as="sourcePoint"/>
+            <mxPoint x="487.9" y="345" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4" value="Проверить схему и типы" style="edgeStyle=none;html=1;rounded=0;strokeColor=#315A7D;strokeWidth=1.9;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="487.9" y="410" as="sourcePoint"/>
+            <mxPoint x="785.4" y="410" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5" value="Ошибки проверки" style="edgeStyle=none;html=1;rounded=0;strokeColor=#B7473E;strokeWidth=1.9;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="785.4" y="520" as="sourcePoint"/>
+            <mxPoint x="487.9" y="520" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6" value="Записать диагностику" style="edgeStyle=none;html=1;rounded=0;strokeColor=#B7473E;strokeWidth=1.9;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="487.9" y="580" as="sourcePoint"/>
+            <mxPoint x="1677.8999999999999" y="580" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m7" value="Отчёт об ошибке" style="edgeStyle=none;html=1;rounded=0;strokeColor=#B7473E;strokeWidth=1.9;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1677.8999999999999" y="640" as="sourcePoint"/>
+            <mxPoint x="190.39999999999998" y="640" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m8" value="Пакет принят" style="edgeStyle=none;html=1;rounded=0;strokeColor=#23756E;strokeWidth=1.9;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="785.4" y="735" as="sourcePoint"/>
+            <mxPoint x="487.9" y="735" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m9" value="Pipeline.transform + predict" style="edgeStyle=none;html=1;rounded=0;strokeColor=#23756E;strokeWidth=1.9;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="487.9" y="805" as="sourcePoint"/>
+            <mxPoint x="1380.3999999999999" y="805" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m10" value="Класс и P(Churn = Yes)" style="edgeStyle=none;html=1;rounded=0;strokeColor=#23756E;strokeWidth=1.9;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1380.3999999999999" y="870" as="sourcePoint"/>
+            <mxPoint x="487.9" y="870" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m11" value="Сохранить прогнозы" style="edgeStyle=none;html=1;rounded=0;strokeColor=#23756E;strokeWidth=1.9;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="487.9" y="935" as="sourcePoint"/>
+            <mxPoint x="1677.8999999999999" y="935" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m12" value="Прогнозы и отчёт" style="edgeStyle=none;html=1;rounded=0;strokeColor=#23756E;strokeWidth=1.9;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1677.8999999999999" y="995" as="sourcePoint"/>
+            <mxPoint x="190.39999999999998" y="995" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

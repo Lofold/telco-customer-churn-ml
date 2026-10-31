@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mxfile host="app.diagrams.net" agent="OpenAI" version="24.7.17" type="device">
+  <diagram id="system-architecture" name="Архитектура системы">
+    <mxGraphModel dx="520" dy="2520" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="520" pageHeight="2520" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Архитектура системы" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontFamily=Arial;fontSize=22;fontStyle=1;fontColor=#172B3A;" vertex="1" parent="1">
+          <mxGeometry x="15.6" y="10" width="488.79999999999995" height="38" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1" value="Исходные данные&lt;br&gt;Telco Customer Churn (CSV)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#07345B;strokeColor=#6FA5CF;fontColor=#D6E9FA;fontFamily=Arial;fontSize=18;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="85" width="440" height="155" as="geometry"/>
+        </mxCell>
+        <mxCell id="s2" value="Проверка качества данных&lt;br&gt;• пропуски&lt;br&gt;• дубликаты&lt;br&gt;• типы данных&lt;br&gt;• выбросы и ошибки" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#07345B;strokeColor=#6FA5CF;fontColor=#D6E9FA;fontFamily=Arial;fontSize=18;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="290" width="440" height="205" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3" value="Предварительная обработка&lt;br&gt;• очистка данных&lt;br&gt;• кодирование категорий&lt;br&gt;• обработка числовых признаков" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#07345B;strokeColor=#6FA5CF;fontColor=#D6E9FA;fontFamily=Arial;fontSize=18;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="545" width="440" height="205" as="geometry"/>
+        </mxCell>
+        <mxCell id="s4" value="Разведочный анализ (EDA)&lt;br&gt;• распределения&lt;br&gt;• взаимосвязи признаков&lt;br&gt;• анализ Churn" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#07345B;strokeColor=#6FA5CF;fontColor=#D6E9FA;fontFamily=Arial;fontSize=18;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="800" width="440" height="180" as="geometry"/>
+        </mxCell>
+        <mxCell id="s5" value="Формирование выборок&lt;br&gt;Train / Validation / Test" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#07345B;strokeColor=#6FA5CF;fontColor=#D6E9FA;fontFamily=Arial;fontSize=18;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1030" width="440" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="s6" value="Обучение ML-моделей&lt;br&gt;• классификация&lt;br&gt;• подбор гиперпараметров по Validation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#07345B;strokeColor=#6FA5CF;fontColor=#D6E9FA;fontFamily=Arial;fontSize=18;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1210" width="440" height="175" as="geometry"/>
+        </mxCell>
+        <mxCell id="s7" value="Итоговая оценка качества&lt;br&gt;на Test: Precision / Recall / F1 / ROC-AUC" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#07345B;strokeColor=#6FA5CF;fontColor=#D6E9FA;fontFamily=Arial;fontSize=18;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1435" width="440" height="175" as="geometry"/>
+        </mxCell>
+        <mxCell id="s8" value="Итоговая ML-модель&lt;br&gt;обученный pipeline + модель" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#07345B;strokeColor=#6FA5CF;fontColor=#D6E9FA;fontFamily=Arial;fontSize=18;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1660" width="440" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="s9" value="Новые данные клиентов&lt;br&gt;incoming batch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#07345B;strokeColor=#6FA5CF;fontColor=#D6E9FA;fontFamily=Arial;fontSize=18;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1840" width="440" height="125" as="geometry"/>
+        </mxCell>
+        <mxCell id="s10" value="Прогнозирование&lt;br&gt;• класс Churn&lt;br&gt;• вероятность оттока" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#07345B;strokeColor=#6FA5CF;fontColor=#D6E9FA;fontFamily=Arial;fontSize=18;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2015" width="440" height="165" as="geometry"/>
+        </mxCell>
+        <mxCell id="s11" value="Бизнес-результат&lt;br&gt;Выделение клиентов с&lt;br&gt;высоким риском оттока" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#07345B;strokeColor=#6FA5CF;fontColor=#D6E9FA;fontFamily=Arial;fontSize=18;align=center;verticalAlign=middle;spacing=8;strokeWidth=2;rounded=1;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="2230" width="440" height="175" as="geometry"/>
+        </mxCell>
+        <mxCell id="sedge0" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#1D5E91;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="240" as="sourcePoint"/>
+            <mxPoint x="260" y="290" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sedge1" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#1D5E91;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="495" as="sourcePoint"/>
+            <mxPoint x="260" y="545" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sedge2" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#1D5E91;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="750" as="sourcePoint"/>
+            <mxPoint x="260" y="800" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sedge3" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#1D5E91;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="980" as="sourcePoint"/>
+            <mxPoint x="260" y="1030" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sedge4" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#1D5E91;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="1160" as="sourcePoint"/>
+            <mxPoint x="260" y="1210" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sedge5" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#1D5E91;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="1385" as="sourcePoint"/>
+            <mxPoint x="260" y="1435" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sedge6" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#1D5E91;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="1610" as="sourcePoint"/>
+            <mxPoint x="260" y="1660" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sedge7" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#1D5E91;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="1790" as="sourcePoint"/>
+            <mxPoint x="260" y="1840" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sedge8" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#1D5E91;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="1965" as="sourcePoint"/>
+            <mxPoint x="260" y="2015" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sedge9" value="" style="edgeStyle=none;html=1;rounded=0;strokeColor=#1D5E91;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="2180" as="sourcePoint"/>
+            <mxPoint x="260" y="2230" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
