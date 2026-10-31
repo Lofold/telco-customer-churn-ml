@@ -1,43 +1,42 @@
 @startuml
- title ML data preparation and churn prediction pipeline
- skinparam backgroundColor #FFFFFF
- skinparam shadowing false
- skinparam activity {
-   BackgroundColor #EAF2F8
-   BorderColor #315A7D
-   FontColor #172B3A
-   DiamondBackgroundColor #FFF1CC
-   DiamondBorderColor #9A7620
- }
- start
- :Load run configuration;
- :Verify raw CSV SHA-256 and schema;
- if (Source valid?) then (yes)
-   :Load initial_60 and select incoming batch;
-   :Normalize empty strings and numeric fields;
-   :Run data-quality checks;
-   if (Quality checks pass?) then (yes)
-     :Separate Churn target and customerID;
-     if (Development/training run?) then (yes)
-       :Create stratified train/validation/test split\n(random_state=42);
-       :Fit preprocessing on train only;
-       :Create candidate engineered features;
-       :Train baseline and candidate models on train;
-       :Select model and hyperparameters using validation;
-       :Evaluate selected model once on test;
-       :Save metrics, feature schema and configuration;
-     else (incoming batch)
-       :Load saved preprocessing and model;
-       :Apply same transformations;
-       :Generate predictions;
-       :Save predictions and processing log;
-       :Evaluate later if actual Churn labels are available;
-     endif
-   else (no)
-     :Save validation diagnostics\nand stop or isolate invalid records;
-   endif
- else (no)
-   :Stop and report source integrity failure;
- endif
- stop
+title Конвейер подготовки данных и прогнозирования оттока
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam activity {
+  BackgroundColor #EAF2F8
+  BorderColor #315A7D
+  FontColor #172B3A
+  DiamondBackgroundColor #FFF1CC
+  DiamondBorderColor #9A7620
+}
+start
+:1. Конфигурация запуска\nseed = 42; относительные пути; схема признаков;
+:2. Проверить SHA-256, состав и порядок столбцов исходного CSV;
+:3. Загрузить initial_60.csv или очередной incoming-пакет;
+:4. Нормализовать пустые строки и типы данных;
+:5. Проверить схему, customerID, дубликаты, категории и диапазоны;
+if (Данные допущены?) then (да)
+  if (Режим запуска?) then (обучение)
+    partition "Обучение и оценка модели" {
+      :6. Отделить customerID и Churn от матрицы предикторов;
+      :7. Стратифицированно разделить данные на Train, Validation и Test;
+      :8. Сформировать признаки; fit импутера, энкодера и скейлера только на Train;\nприменить преобразования к Validation и Test;
+      :9. Обучить базовую и кандидатные модели на Train;
+      :9. Выбрать модель и параметры по Validation;
+      :9. Один раз оценить выбранную модель на Test;\nне использовать Test для настройки;
+      :Сохранить модель, pipeline, метрики и конфигурацию эксперимента;
+    }
+  else (прогнозирование)
+    partition "Пакетное прогнозирование" {
+      :10. Загрузить сохранённые преобразователи и обученную модель;
+      :10. Применить обученный pipeline к входящему пакету;\nповторный fit не выполнять;
+      :10. Сформировать класс и вероятность оттока;\ncustomerID использовать только для сопоставления;
+      :10. Сохранить прогнозы и журнал обработки;\nChurn не включать в матрицу признаков;
+      :11. После поступления фактического Churn сопоставить метки и рассчитать метрики;
+    }
+  endif
+else (нет)
+  :Остановить обработку и сохранить диагностику ошибки;
+endif
+stop
 @enduml

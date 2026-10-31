@@ -1,71 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="1810" viewBox="0 0 1300 1810">
-<title>Конвейер подготовки данных и прогнозирования оттока — Train, Validation, Test</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="1270" viewBox="0 0 850 1380">
+<title>Конвейер подготовки данных и прогнозирования оттока</title>
+<desc>Общий этап проверки данных разделяется на два сценария: обучение модели с Train, Validation и Test и пакетное прогнозирование с оценкой после поступления фактических меток.</desc>
 <defs>
-<marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#496779"/></marker>
-<style>
-.edge{fill:none;stroke:#496779;stroke-width:2.2;marker-end:url(#arrow)}
-.process{fill:#EAF2F8;stroke:#315A7D;stroke-width:2.6}
-.decision{fill:#FFF1CC;stroke:#9A7620;stroke-width:2.6}
-.error{fill:#FCE8E6;stroke:#A33D35;stroke-width:2.6}
-.label{font-family:Arial,sans-serif;fill:#172B3A;text-anchor:middle;font-size:19px}
-.small{font-family:Arial,sans-serif;fill:#314B5B;text-anchor:middle;font-size:17px}
-.title{font-family:Arial,sans-serif;fill:#172B3A;text-anchor:middle;font-size:30px}
-</style>
+  <marker id="arrow" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 z" fill="#496779"/></marker>
+  <marker id="arrow-train" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 z" fill="#315A7D"/></marker>
+  <marker id="arrow-predict" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto"><path d="M0,0 L9,4 L0,8 z" fill="#23756E"/></marker>
+  <style>
+    .title{font:700 23px Arial,sans-serif;fill:#172B3A;text-anchor:middle;letter-spacing:.15px}
+    .node-text{font:16px Arial,sans-serif;fill:#172B3A;text-anchor:middle}
+    .edge-label{font:14px Arial,sans-serif;fill:#314B5B;text-anchor:middle}
+    .panel-title{font:700 16px Arial,sans-serif;text-anchor:middle;letter-spacing:.45px}
+    .process{fill:#EAF2F8;stroke:#315A7D;stroke-width:2}
+    .decision{fill:#FFF1CC;stroke:#9A7620;stroke-width:2}
+    .saved{fill:#E5F2E8;stroke:#4C8A5B;stroke-width:2}
+    .error{fill:#FCE8E6;stroke:#B7473E;stroke-width:2}
+    .edge{fill:none;stroke:#496779;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .train-edge{fill:none;stroke:#315A7D;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    .predict-edge{fill:none;stroke:#23756E;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    .error-edge{fill:none;stroke:#B7473E;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  </style>
 </defs>
-<rect width="1300" height="1810" fill="#fff"/>
-<text class="title" x="650" y="42">Конвейер подготовки данных и прогнозирования оттока</text>
-<path class="edge" d="M650 78 V100 M650 172 V200 M650 272 V285 M650 375 V390 M650 462 V485 M650 557 V580 M650 652 V665 M650 755 V790"/>
-<text class="small" x="672" y="778">да</text>
-<path class="edge" d="M550 835 L550 885 L305 885 L305 930 M750 835 L750 885 L995 885 L995 930"/>
-<text class="small" x="405" y="878">обучение</text><text class="small" x="895" y="878">прогнозирование</text>
-<path class="edge" d="M305 1022 V1045 M305 1150 V1175 M305 1255 V1270 M305 1350 V1365 M305 1460 V1475 M305 1555 V1580"/>
-<path class="edge" d="M995 1010 V1025 M995 1105 V1120 M995 1200 V1215 M995 1303 V1320 M995 1408 V1440"/>
-<path class="edge" d="M745 330 H1280 V1685 H870 M745 710 H1250 V1685 H870"/>
-<text class="small" x="1245" y="315">нет</text><text class="small" x="1215" y="695">нет</text>
-<path class="edge" d="M650 1730 V1750"/>
-<circle cx="650" cy="70" r="9" fill="#315A7D"/>
-<rect class="process" x="400" y="100" width="500" height="72" rx="17"/>
-<text class="label" x="650" y="130"><tspan x="650">1. Загрузить конфигурацию</tspan><tspan x="650" dy="24">seed = 42; пути; схема признаков</tspan></text>
-<rect class="process" x="400" y="200" width="500" height="72" rx="17"/>
-<text class="label" x="650" y="230"><tspan x="650">2. Проверить SHA-256 и схему</tspan><tspan x="650" dy="24">неизменяемого исходного CSV</tspan></text>
-<polygon class="decision" points="650,285 745,330 650,375 555,330"/>
-<text class="label" x="650" y="324"><tspan x="650">Источник</tspan><tspan x="650" dy="23">корректен?</tspan></text>
-<rect class="process" x="400" y="390" width="500" height="72" rx="17"/>
-<text class="label" x="650" y="420"><tspan x="650">3. Загрузить initial_60 или</tspan><tspan x="650" dy="24">очередной incoming-пакет</tspan></text>
-<rect class="process" x="400" y="485" width="500" height="72" rx="17"/>
-<text class="label" x="650" y="515"><tspan x="650">4. Нормализовать значения</tspan><tspan x="650" dy="24">пустые строки → пропуски; типы</tspan></text>
-<rect class="process" x="400" y="580" width="500" height="72" rx="17"/>
-<text class="label" x="650" y="610"><tspan x="650">5. Проверить качество данных</tspan><tspan x="650" dy="24">схема, ID, категории, диапазоны</tspan></text>
-<polygon class="decision" points="650,665 745,710 650,755 555,710"/>
-<text class="label" x="650" y="704"><tspan x="650">Проверки</tspan><tspan x="650" dy="23">пройдены?</tspan></text>
-<polygon class="decision" points="650,790 760,835 650,880 540,835"/>
-<text class="label" x="650" y="829"><tspan x="650">Режим</tspan><tspan x="650" dy="23">запуска?</tspan></text>
-<rect class="process" x="30" y="930" width="550" height="92" rx="17"/>
-<text class="label" x="305" y="958"><tspan x="305">6–7. Отделить customerID и Churn;</tspan><tspan x="305" dy="23">стратифицированно разделить X и y на</tspan><tspan x="305" dy="23">Train / Validation / Test</tspan></text>
-<rect class="process" x="30" y="1045" width="550" height="105" rx="17"/>
-<text class="label" x="305" y="1073"><tspan x="305">8. Сформировать признаки; fit импутера,</tspan><tspan x="305" dy="23">энкодера и скейлера только на Train;</tspan><tspan x="305" dy="23">transform всех трёх выборок без повторного fit</tspan></text>
-<rect class="process" x="30" y="1175" width="550" height="80" rx="17"/>
-<text class="label" x="305" y="1205"><tspan x="305">9. Обучить базовую и кандидатные</tspan><tspan x="305" dy="24">модели на Train</tspan></text>
-<rect class="process" x="30" y="1270" width="550" height="80" rx="17"/>
-<text class="label" x="305" y="1300"><tspan x="305">Сравнить модели и выбрать параметры</tspan><tspan x="305" dy="24">по результатам Validation</tspan></text>
-<rect class="process" x="30" y="1365" width="550" height="95" rx="17"/>
-<text class="label" x="305" y="1394"><tspan x="305">Итоговая независимая оценка</tspan><tspan x="305" dy="24">выбранной модели на Test;</tspan><tspan x="305" dy="24">не использовать Test для настройки</tspan></text>
-<rect class="process" x="30" y="1475" width="550" height="80" rx="17"/>
-<text class="label" x="305" y="1505"><tspan x="305">Сохранить модель, преобразователи,</tspan><tspan x="305" dy="24">метрики и конфигурацию эксперимента</tspan></text>
-<circle cx="305" cy="1590" r="14" fill="none" stroke="#315A7D" stroke-width="3"/><circle cx="305" cy="1590" r="7" fill="#315A7D"/>
-<rect class="process" x="720" y="930" width="550" height="80" rx="17"/>
-<text class="label" x="995" y="960"><tspan x="995">Загрузить сохранённые</tspan><tspan x="995" dy="24">преобразования и модель</tspan></text>
-<rect class="process" x="720" y="1025" width="550" height="80" rx="17"/>
-<text class="label" x="995" y="1055"><tspan x="995">Применить те же преобразования</tspan><tspan x="995" dy="24">к incoming-пакету</tspan></text>
-<rect class="process" x="720" y="1120" width="550" height="80" rx="17"/>
-<text class="label" x="995" y="1150"><tspan x="995">Получить класс и вероятность</tspan><tspan x="995" dy="24">оттока для каждой записи</tspan></text>
-<rect class="process" x="720" y="1215" width="550" height="88" rx="17"/>
-<text class="label" x="995" y="1245"><tspan x="995">Сохранить прогнозы и журнал;</tspan><tspan x="995" dy="24">фактический Churn не использовать</tspan><tspan x="995" dy="23">как входной признак</tspan></text>
-<rect class="process" x="720" y="1320" width="550" height="88" rx="17"/>
-<text class="label" x="995" y="1350"><tspan x="995">Оценить качество после поступления</tspan><tspan x="995" dy="24">фактических меток Churn, если доступны</tspan></text>
-<circle cx="995" cy="1455" r="14" fill="none" stroke="#315A7D" stroke-width="3"/><circle cx="995" cy="1455" r="7" fill="#315A7D"/>
-<rect class="error" x="430" y="1640" width="440" height="90" rx="17"/>
-<text class="label" x="650" y="1674"><tspan x="650">Сохранить диагностику; остановить</tspan><tspan x="650" dy="24">обработку / изолировать ошибочный пакет</tspan></text>
-<circle cx="650" cy="1765" r="14" fill="none" stroke="#315A7D" stroke-width="3"/><circle cx="650" cy="1765" r="7" fill="#315A7D"/>
-</svg>
+<rect width="100%" height="100%" fill="#FFFFFF"/>
+<text class="title" x="425" y="35">КОНВЕЙЕР ПОДГОТОВКИ ДАННЫХ И ПРОГНОЗИРОВАНИЯ ОТТОКА</text><circle cx="425" cy="66" r="7" fill="#315A7D"/><path class="edge" d="M425 73 V88" marker-end="url(#arrow)"/><rect class="process" x="215" y="88" width="420" height="58" rx="14"/><text class="node-text" x="425.0" y="113.28"><tspan x="425.0" dy="0">1. Конфигурация запуска</tspan><tspan x="425.0" dy="19">seed = 42; относительные пути; схема признаков</tspan></text><path class="edge" d="M425 146 V165" marker-end="url(#arrow)"/><rect class="process" x="195" y="165" width="460" height="65" rx="14"/><text class="node-text" x="425.0" y="184.28"><tspan x="425.0" dy="0">2. Проверка исходного CSV</tspan><tspan x="425.0" dy="19">SHA-256, состав и порядок столбцов;</tspan><tspan x="425.0" dy="19">исходный файл не изменять</tspan></text><path class="edge" d="M425 230 V250" marker-end="url(#arrow)"/><rect class="process" x="215" y="250" width="420" height="56" rx="14"/><text class="node-text" x="425.0" y="274.1"><tspan x="425.0" dy="0">3. Загрузка данных</tspan><tspan x="425.0" dy="18">initial_60.csv или очередной incoming-пакет</tspan></text><path class="edge" d="M425 306 V318" marker-end="url(#arrow)"/><rect class="process" x="215" y="318" width="420" height="56" rx="14"/><text class="node-text" x="425.0" y="342.1"><tspan x="425.0" dy="0">4. Нормализация</tspan><tspan x="425.0" dy="18">пустые строки → пропуски; приведение типов</tspan></text><path class="edge" d="M425 374 V386" marker-end="url(#arrow)"/><rect class="process" x="215" y="386" width="420" height="58" rx="14"/><text class="node-text" x="425.0" y="411.26"><tspan x="425.0" dy="0">5. Контроль качества</tspan><tspan x="425.0" dy="17">схема, customerID, дубликаты, категории, диапазоны</tspan></text><path class="edge" d="M425 444 V453" marker-end="url(#arrow)"/><polygon class="decision" points="425,453.0 535.0,500 425,547.0 315.0,500"/><text class="node-text" x="425" y="496.5"><tspan x="425" dy="0">Данные</tspan><tspan x="425" dy="19">допущены?</tspan></text><path class="edge" d="M425 547 V582" marker-end="url(#arrow)"/><text class="edge-label" x="445" y="570">да</text><polygon class="decision" points="425,582.0 518.0,625 425,668.0 332.0,625"/><text class="node-text" x="425" y="621.5"><tspan x="425" dy="0">Режим</tspan><tspan x="425" dy="19">запуска?</tspan></text><rect class="error" x="665" y="462" width="165" height="112" rx="14"/><text class="node-text" x="747.5" y="487.1"><tspan x="747.5" dy="0">Остановить</tspan><tspan x="747.5" dy="18">обработку и</tspan><tspan x="747.5" dy="18">сохранить</tspan><tspan x="747.5" dy="18">диагностику</tspan><tspan x="747.5" dy="18">при ошибке</tspan></text><path class="error-edge" d="M535 500 H650"/><path class="error-edge" d="M650 500 H665" marker-end="url(#arrow)"/><text class="edge-label" x="590" y="486">нет</text><rect x="28" y="700" width="390" height="660" rx="20" fill="#F5FAFE" stroke="#B7D2E7" stroke-width="1.8"/><rect x="432" y="700" width="390" height="660" rx="20" fill="#F4FBFA" stroke="#B8DDD8" stroke-width="1.8"/><text class="panel-title" x="223" y="727" fill="#245B86">ОБУЧЕНИЕ И ОЦЕНКА МОДЕЛИ</text><text class="panel-title" x="627" y="727" fill="#23756E">ПАКЕТНОЕ ПРОГНОЗИРОВАНИЕ</text><path class="train-edge" d="M365 649 L48 690 L48 740 L223 740"/><path class="predict-edge" d="M485 649 L802 690 L802 740 L627 740"/><path class="train-edge" d="M223 740 V750" marker-end="url(#arrow)"/><path class="predict-edge" d="M627 740 V750" marker-end="url(#arrow)"/><text class="edge-label" x="276" y="682">обучение</text><text class="edge-label" x="574" y="682">прогнозирование</text><rect class="process" x="48" y="750" width="350" height="84" rx="14"/><text class="node-text" x="223.0" y="772.76"><tspan x="223.0" dy="0">6. Отделить идентификатор и цель</tspan><tspan x="223.0" dy="16">customerID — для сопоставления;</tspan><tspan x="223.0" dy="16">Churn вынести в y; оба поля исключить</tspan><tspan x="223.0" dy="16">из матрицы предикторов X</tspan></text><path class="train-edge" d="M223 834 V846" marker-end="url(#arrow)"/><rect class="process" x="48" y="846" width="350" height="68" rx="14"/><text class="node-text" x="223.0" y="875.6"><tspan x="223.0" dy="0">7. Стратифицированное разбиение</tspan><tspan x="223.0" dy="19">Train / Validation / Test; без пересечений</tspan></text><path class="train-edge" d="M223 914 V928" marker-end="url(#arrow)"/><rect class="process" x="48" y="928" width="350" height="84" rx="14"/><text class="node-text" x="223.0" y="950.76"><tspan x="223.0" dy="0">8. Формирование признаков и подготовка</tspan><tspan x="223.0" dy="16">fit импутера, энкодера и скейлера —</tspan><tspan x="223.0" dy="16">только на Train; применить к Validation</tspan><tspan x="223.0" dy="16">и Test без повторного fit</tspan></text><path class="train-edge" d="M223 1012 V1024" marker-end="url(#arrow)"/><rect class="process" x="48" y="1024" width="350" height="65" rx="14"/><text class="node-text" x="223.0" y="1052.6"><tspan x="223.0" dy="0">9. Обучить базовую и кандидатные</tspan><tspan x="223.0" dy="18">модели на Train</tspan></text><path class="train-edge" d="M223 1089 V1101" marker-end="url(#arrow)"/><rect class="process" x="48" y="1101" width="350" height="65" rx="14"/><text class="node-text" x="223.0" y="1129.6"><tspan x="223.0" dy="0">9. Выбрать модель и параметры</tspan><tspan x="223.0" dy="18">по результатам Validation</tspan></text><path class="train-edge" d="M223 1166 V1178" marker-end="url(#arrow)"/><rect class="process" x="48" y="1178" width="350" height="80" rx="14"/><text class="node-text" x="223.0" y="1198.76"><tspan x="223.0" dy="0">9. Итоговая независимая оценка</tspan><tspan x="223.0" dy="16">выбранную модель оценить на Test</tspan><tspan x="223.0" dy="16">один раз; не использовать Test</tspan><tspan x="223.0" dy="16">для настройки</tspan></text><path class="train-edge" d="M223 1258 V1270" marker-end="url(#arrow)"/><rect class="saved" x="48" y="1270" width="350" height="58" rx="14"/><text class="node-text" x="223.0" y="1295.76"><tspan x="223.0" dy="0">Сохранить модель, pipeline и метрики</tspan><tspan x="223.0" dy="16">с конфигурацией эксперимента</tspan></text><rect class="process" x="452" y="750" width="350" height="66" rx="14"/><text class="node-text" x="627.0" y="779.1"><tspan x="627.0" dy="0">10. Загрузить сохранённые</tspan><tspan x="627.0" dy="18">преобразователи и обученную модель</tspan></text><path class="predict-edge" d="M627 816 V830" marker-end="url(#arrow)"/><rect class="process" x="452" y="830" width="350" height="78" rx="14"/><text class="node-text" x="627.0" y="856.1"><tspan x="627.0" dy="0">10. Преобразовать входящий пакет</tspan><tspan x="627.0" dy="18">применить обученный pipeline;</tspan><tspan x="627.0" dy="18">повторный fit не выполнять</tspan></text><path class="predict-edge" d="M627 908 V922" marker-end="url(#arrow)"/><rect class="process" x="452" y="922" width="350" height="78" rx="14"/><text class="node-text" x="627.0" y="948.1"><tspan x="627.0" dy="0">10. Сформировать прогноз</tspan><tspan x="627.0" dy="18">класс и вероятность оттока;</tspan><tspan x="627.0" dy="18">customerID — только для связи</tspan></text><path class="predict-edge" d="M627 1000 V1014" marker-end="url(#arrow)"/><rect class="process" x="452" y="1014" width="350" height="78" rx="14"/><text class="node-text" x="627.0" y="1040.76"><tspan x="627.0" dy="0">10. Сохранить прогнозы</tspan><tspan x="627.0" dy="17">и журнал обработки; Churn не включать</tspan><tspan x="627.0" dy="17">в матрицу признаков</tspan></text><path class="predict-edge" d="M627 1092 V1106" marker-end="url(#arrow)"/><rect class="saved" x="452" y="1106" width="350" height="104" rx="14"/><text class="node-text" x="627.0" y="1137.26"><tspan x="627.0" dy="0">11. Оценка после поступления меток</tspan><tspan x="627.0" dy="17">сопоставить прогноз с фактическим Churn;</tspan><tspan x="627.0" dy="17">рассчитать метрики после появления</tspan><tspan x="627.0" dy="17">истинной метки</tspan></text><path class="train-edge" d="M223 1328 V1340" marker-end="url(#arrow)"/><circle cx="223" cy="1345" r="8" fill="#FFFFFF" stroke="#315A7D" stroke-width="3"/><circle cx="223" cy="1345" r="3.5" fill="#315A7D"/><path class="predict-edge" d="M627 1210 V1275" marker-end="url(#arrow)"/><circle cx="627" cy="1287" r="8" fill="#FFFFFF" stroke="#23756E" stroke-width="3"/><circle cx="627" cy="1287" r="3.5" fill="#23756E"/></svg>
