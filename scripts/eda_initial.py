@@ -109,9 +109,15 @@ def save_bar_chart(
     plt.close(fig)
 
 
-def run_chi_square(table: pd.DataFrame) -> tuple[float, float, int]:
+def run_chi_square(
+    table: pd.DataFrame,
+    correction: bool = False,
+) -> tuple[float, float, int]:
     """Возвращает chi-square, p-value и число степеней свободы."""
-    chi2, p_value, dof, _ = chi2_contingency(table)
+    chi2, p_value, dof, _ = chi2_contingency(
+        table,
+        correction=correction,
+    )
     return float(chi2), float(p_value), int(dof)
 
 
@@ -384,7 +390,7 @@ def main() -> None:
 
     # H1: Contract and Churn are associated.
     table_contract = pd.crosstab(df["Contract"], df[TARGET])
-    chi2, p_value, dof = run_chi_square(table_contract)
+    chi2, p_value, dof = run_chi_square(table_contract, correction=False)
     rates = (
         table_contract.get("Yes", pd.Series(dtype=float))
         / table_contract.sum(axis=1)
@@ -393,7 +399,7 @@ def main() -> None:
     hypothesis_rows.append(
         {
             "hypothesis": "H1: тип договора связан с оттоком клиентов",
-            "test": "Критерий хи-квадрат независимости",
+            "test": "Критерий хи-квадрат Пирсона без поправки Йейтса",
             "statistic": chi2,
             "degrees_of_freedom": dof,
             "p_value": p_value,
@@ -430,12 +436,12 @@ def main() -> None:
     tech_table = pd.crosstab(tech_df["TechSupport"], tech_df[TARGET]).reindex(
         index=["No", "Yes"], columns=["No", "Yes"], fill_value=0
     )
-    chi2, p_value, dof = run_chi_square(tech_table)
+    chi2, p_value, dof = run_chi_square(tech_table, correction=True)
     tech_rates = tech_df.groupby("TechSupport")[TARGET].apply(rate_yes)
     hypothesis_rows.append(
         {
             "hypothesis": "H3: у клиентов без техподдержки отток выше, чем у клиентов с техподдержкой",
-            "test": "Критерий хи-квадрат (только группы Yes/No)",
+            "test": "Критерий хи-квадрат Пирсона с поправкой Йейтса (группы Yes/No)",
             "statistic": chi2,
             "degrees_of_freedom": dof,
             "p_value": p_value,
@@ -461,12 +467,12 @@ def main() -> None:
         columns=["No", "Yes"],
         fill_value=0,
     )
-    chi2, p_value, dof = run_chi_square(payment_table)
+    chi2, p_value, dof = run_chi_square(payment_table, correction=True)
     pay_rates = payment_table["Yes"] / payment_table.sum(axis=1) * 100
     hypothesis_rows.append(
         {
             "hypothesis": "H4: при оплате Electronic check отток выше, чем при других способах оплаты",
-            "test": "Критерий хи-квадрат независимости",
+            "test": "Критерий хи-квадрат Пирсона с поправкой Йейтса",
             "statistic": chi2,
             "degrees_of_freedom": dof,
             "p_value": p_value,
