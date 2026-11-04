@@ -1,0 +1,65 @@
+@startuml
+' UML Use Case: implemented capabilities and planned target functions
+left to right direction
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam ArrowColor #496779
+skinparam ActorBorderColor #526579
+skinparam ActorFontColor #263746
+skinparam UsecaseBorderColor #315A7D
+skinparam UsecaseFontColor #172B3A
+skinparam packageBorderColor #315A7D
+skinparam packageFontColor #17324D
+skinparam usecase {
+  BackgroundColor<<implemented>> #E6F2E9
+  BorderColor<<implemented>> #4C8A5B
+  BackgroundColor<<planned>> #FFF2D8
+  BorderColor<<planned>> #B8892E
+}
+
+actor "Специалист по данным\n/ ML-разработчик" as Analyst
+
+rectangle "Система анализа и прогнозирования оттока клиентов" {
+  usecase "Подготовить начальную выборку\nи incoming-пакеты" as UC_Split <<implemented>>
+  usecase "Провести EDA\nи проверки начальной выборки" as UC_EDA <<implemented>>
+  usecase "Изучить манифест, отчёты\nи графики" as UC_Reports <<implemented>>
+
+  usecase "Проверить входящий пакет\nпо схеме и качеству" as UC_Validate <<planned>>
+  usecase "Сформировать и обучить\nконвейер признаков и модель" as UC_Train <<planned>>
+  usecase "Оценить модель на Validation\nи независимом Test" as UC_Evaluate <<planned>>
+  usecase "Выполнить пакетное\nпрогнозирование" as UC_Predict <<planned>>
+  usecase "Оценить прогнозы после\nпоступления фактических меток" as UC_Delayed <<planned>>
+}
+
+Analyst -- UC_Split
+Analyst -- UC_EDA
+Analyst -- UC_Reports
+Analyst -- UC_Validate
+Analyst -- UC_Train
+Analyst -- UC_Evaluate
+Analyst -- UC_Predict
+Analyst -- UC_Delayed
+
+UC_Predict ..> UC_Validate : <<include>>
+UC_Evaluate ..> UC_Train : <<include>>
+UC_Delayed ..> UC_Predict : <<extend>>
+
+note bottom of UC_Reports
+  Реализовано в текущем проекте:
+  scripts/split_data.py и scripts/eda_initial.py
+end note
+
+note bottom of UC_Delayed
+  Планируемые функции не считаются реализованными
+  только на основании их присутствия на диаграмме.
+end note
+
+legend bottom
+  |= Обозначение |= Состояние |
+  |<#E6F2E9> Зелёный | Реализовано |
+  |<#FFF2D8> Янтарный | Запланировано |
+endlegend
+@enduml

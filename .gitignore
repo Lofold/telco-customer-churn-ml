@@ -1,4 +1,4 @@
-﻿# Виртуальное окружение
+# Виртуальное окружение
 .venv/
 
 # Кэш Python
@@ -29,3 +29,11 @@ models/*.joblib
 
 # Локальные результаты
 reports/generated/
+
+# Structurizr Local: machine-specific cache, generated workspace and backup
+/diagrams/.structurizr/
+/diagrams/workspace.json
+/diagrams/workspace.initial.backup.dsl
+
+# Локальный архив устаревших артефактов
+/_archive/

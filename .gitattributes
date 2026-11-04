@@ -15,7 +15,11 @@
 .gitignore text eol=lf
 .gitattributes text eol=lf
 
-*.drawio text eol=lf
+# Текстовые исходники диаграмм и SVG-экспорты
+*.dsl text eol=lf
+*.puml text eol=lf
+*.d2 text eol=lf
+*.svg text eol=lf
 
 # LF для CSV с производными данными
 *.csv text eol=lf

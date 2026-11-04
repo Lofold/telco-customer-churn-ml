@@ -1,0 +1,78 @@
+@startuml
+' Target UML Sequence: batch prediction after the ML pipeline is implemented
+title Целевой сценарий пакетного прогнозирования
+
+autonumber
+hide footbox
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam defaultFontName Arial
+skinparam defaultFontSize 13
+skinparam sequence {
+  ArrowColor #496779
+  LifeLineBorderColor #8A9BA8
+  LifeLineBackgroundColor #F5F8FA
+  ParticipantBorderColor #315A7D
+  ParticipantBackgroundColor #EAF2F8
+  ParticipantFontColor #172B3A
+  ActorBorderColor #526579
+  ActorFontColor #263746
+  GroupBorderColor #9AAAB6
+  GroupBackgroundColor #F7F9FB
+}
+
+actor "Специалист по данным" as Analyst
+participant "CLI\npredict_batch.py\n[планируется]" as CLI
+collections "Входящий CSV\ndata/incoming/" as Input
+participant "Валидатор схемы\nи качества" as Validator
+database "Артефакт модели\nmodels/model_bundle.joblib" as Artifact
+participant "Обученный sklearn\nPipeline" as Pipeline
+database "Хранилище результатов\nreports/" as Results
+
+Analyst -> CLI: Запуск с указанием входного пакета
+activate CLI
+CLI -> Input: Прочитать CSV
+Input --> CLI: Таблица входных записей
+CLI -> CLI: Сохранить customerID отдельно
+CLI -> CLI: Исключить Churn и customerID из X
+CLI -> Validator: Проверить столбцы, типы, категории,\nпропуски, диапазоны и уникальность ID
+activate Validator
+Validator --> CLI: Протокол проверки
+deactivate Validator
+
+alt Обнаружены ошибки качества
+  CLI -> Results: Записать диагностический отчёт
+  CLI --> Analyst: Завершить обработку без прогнозов
+else Пакет прошёл проверку
+  CLI -> Artifact: Загрузить сохранённый bundle
+  alt Артефакт отсутствует или повреждён
+    Artifact --> CLI: Ошибка загрузки
+    CLI -> Results: Записать ошибку конфигурации
+    CLI --> Analyst: Завершить обработку
+  else Артефакт доступен
+    Artifact --> CLI: Преобразователи и классификатор
+    CLI -> Pipeline: Преобразовать X обученными шагами
+    activate Pipeline
+    note right of Pipeline
+      Повторный fit на incoming-пакете запрещён.
+      Используются параметры, полученные только на Train.
+    end note
+    Pipeline --> CLI: Матрица преобразованных признаков
+    CLI -> Pipeline: predict() и predict_proba()
+    Pipeline --> CLI: Класс и вероятность оттока
+    deactivate Pipeline
+    CLI -> Results: Сохранить customerID, класс,\nвероятность и журнал пакета
+    Results --> CLI: Подтверждение записи
+    CLI --> Analyst: Путь к файлу прогнозов и статус
+  end
+end
+
+deactivate CLI
+
+note over Analyst,Results
+  Диаграмма описывает целевое поведение, а не текущую реализацию.
+  Если фактический Churn появится позднее, его используют только
+  для отложенной оценки — не как входной предиктор.
+end note
+@enduml

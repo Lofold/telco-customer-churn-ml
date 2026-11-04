@@ -1,0 +1,129 @@
+# Logical architecture of the local project. Planned modules are explicitly marked.
+direction: right
+
+analyst: "Специалист по данным\n/ ML-разработчик" {
+  shape: person
+  style.fill: "#526579"
+  style.font-color: "#FFFFFF"
+  style.stroke: "#34495E"
+}
+
+runtime: "Локальное окружение Python" {
+  direction: down
+  style.fill: "#F5F8FB"
+  style.stroke: "#AFC3D3"
+  style.stroke-width: 2
+
+  split: "scripts/split_data.py\nПодготовка initial/incoming\n[реализовано]" {
+    style.fill: "#E1F1EC"
+    style.stroke: "#23756E"
+  }
+  eda: "scripts/eda_initial.py\nEDA и отчёты\n[реализовано]" {
+    style.fill: "#E1F1EC"
+    style.stroke: "#23756E"
+  }
+  validator: "Модуль валидации пакетов\n[планируется]" {
+    style.fill: "#FFF0D5"
+    style.stroke: "#B8892E"
+  }
+  trainer: "Обучение и оценка модели\n[планируется]" {
+    style.fill: "#FFF0D5"
+    style.stroke: "#B8892E"
+  }
+  predictor: "Пакетное прогнозирование\n[планируется]" {
+    style.fill: "#FFF0D5"
+    style.stroke: "#B8892E"
+  }
+}
+
+sources: "Хранилище данных" {
+  direction: down
+  style.fill: "#F6F3FA"
+  style.stroke: "#C5B8D9"
+  style.stroke-width: 2
+
+  raw: "data/raw/\nЭталонный CSV\nнеизменяемый" {
+    shape: cylinder
+    style.fill: "#E8EDF2"
+    style.stroke: "#8493A2"
+  }
+  initial: "data/initial/\ninitial_60.csv" {
+    shape: cylinder
+    style.fill: "#EAF2F8"
+    style.stroke: "#315A7D"
+  }
+  incoming: "data/incoming/\nbatch_01…04.csv\nсимулируемые порции" {
+    shape: cylinder
+    style.fill: "#E8EDF2"
+    style.stroke: "#8493A2"
+  }
+}
+
+artifacts: "Отчёты и ML-артефакты" {
+  direction: down
+  style.fill: "#F7F4FA"
+  style.stroke: "#C5B8D9"
+  style.stroke-width: 2
+
+  manifest: "reports/data_manifest.csv\nSHA-256 и сведения о наборах\n[реализовано]" {
+    shape: document
+    style.fill: "#E1F1EC"
+    style.stroke: "#23756E"
+  }
+  eda_reports: "reports/eda/\nтаблицы, JSON, текст, графики\n[реализовано]" {
+    shape: package
+    style.fill: "#E1F1EC"
+    style.stroke: "#23756E"
+  }
+  quality: "Отчёты валидации\n[планируется]" {
+    shape: package
+    style.fill: "#FFF0D5"
+    style.stroke: "#B8892E"
+  }
+  model: "models/\nобученная модель и преобразования\n[планируется]" {
+    shape: cylinder
+    style.fill: "#E9E1F8"
+    style.stroke: "#8265A5"
+  }
+  predictions: "reports/predictions/\nпакетные прогнозы и журналы\n[планируется]" {
+    shape: package
+    style.fill: "#E9E1F8"
+    style.stroke: "#8265A5"
+  }
+}
+
+git: "Git / GitHub" {
+  style.fill: "#E8EDF2"
+  style.stroke: "#8493A2"
+  style.font-color: "#263746"
+}
+
+analyst -> runtime.split: "запускает"
+analyst -> runtime.eda: "запускает"
+analyst -> runtime.validator: "будущий сценарий"
+analyst -> runtime.trainer: "будущий сценарий"
+analyst -> runtime.predictor: "будущий сценарий"
+
+runtime.split -> sources.raw: "читает"
+runtime.split -> sources.initial: "создаёт"
+runtime.split -> sources.incoming: "создаёт"
+runtime.split -> artifacts.manifest: "записывает"
+runtime.eda -> sources.initial: "анализирует"
+runtime.eda -> artifacts.eda_reports: "формирует"
+runtime.validator -> sources.incoming: "проверяет"
+runtime.validator -> artifacts.quality: "формирует протокол"
+runtime.trainer -> sources.initial: "использует для разработки"
+runtime.trainer -> artifacts.model: "сохраняет"
+runtime.trainer -> artifacts.quality: "сохраняет метрики"
+runtime.predictor -> sources.incoming: "обрабатывает"
+runtime.predictor -> artifacts.model: "загружает"
+runtime.predictor -> artifacts.predictions: "сохраняет"
+
+analyst -> git: "контроль версий кода,\nконфигураций и выбранных файлов"
+
+note: "Git/GitHub — инструменты разработки, а не контейнеры выполняемой ML-системы и не runtime-зависимость обработки данных." {
+  shape: callout
+  style.fill: "#F4F6F8"
+  style.stroke: "#AAB6C0"
+}
+git -> note: "роль в архитектуре"

@@ -1,0 +1,58 @@
+@startuml
+' UML Activity: actual implemented workflow for data preparation and EDA
+title Реализованный процесс подготовки данных и EDA
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam defaultFontName Arial
+skinparam defaultFontSize 13
+skinparam activity {
+  BackgroundColor #EAF2F8
+  BorderColor #315A7D
+  FontColor #172B3A
+  DiamondBackgroundColor #FFF1CC
+  DiamondBorderColor #9A7620
+  StartColor #23756E
+  EndColor #B7473E
+  BarColor #496779
+}
+
+start
+
+partition "Специалист по данным" {
+  :Запустить scripts/split_data.py;
+}
+
+partition "Подготовка данных\n[реализовано]" {
+  :Прочитать неизменяемый CSV\nиз data/raw/;
+  :Проверить ожидаемую структуру\nи подготовить разбиение;
+  :Сформировать initial_60.csv\nи четыре incoming-пакета;
+  :Вычислить SHA-256 источника;
+  :Записать reports/data_manifest.csv;
+}
+
+partition "Специалист по данным" {
+  :Запустить scripts/eda_initial.py;
+}
+
+partition "Разведочный анализ\n[реализовано]" {
+  :Загрузить data/initial/initial_60.csv;
+  :Нормализовать пустые строки\nи преобразовать TotalCharges;
+  :Проверить пропуски, дубликаты\nи распределение целевой переменной;
+  :Рассчитать описательные статистики,\nвыбросы и ассоциации;
+  :Сформировать таблицы, JSON,\nтекстовый отчёт и графики в reports/eda/;
+}
+
+partition "Специалист по данным" {
+  :Проверить манифест и результаты EDA;
+}
+
+stop
+
+note right
+  Это фактически реализованный сценарий.
+  Валидация incoming-пакетов, Train/Validation/Test,
+  обучение модели и прогнозирование в него не входят:
+  они остаются следующими этапами разработки.
+end note
+@enduml

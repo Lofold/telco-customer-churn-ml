@@ -1,0 +1,130 @@
+# Target ML pipeline: development/training and batch inference are separate flows.
+direction: right
+
+raw: "Исходный CSV\ndata/raw/" {
+  shape: cylinder
+  style.fill: "#E8EDF2"
+  style.stroke: "#8493A2"
+}
+
+initial: "Начальная выборка\ninitial_60.csv\n[источник для разработки]" {
+  shape: cylinder
+  style.fill: "#EAF2F8"
+  style.stroke: "#315A7D"
+}
+
+incoming: "Входящие пакеты\nbatch_01…04.csv\n[имитация поступления]" {
+  shape: cylinder
+  style.fill: "#E8EDF2"
+  style.stroke: "#8493A2"
+}
+
+split: "split_data.py\nРазбиение + SHA-256\n[реализовано]" {
+  style.fill: "#E1F1EC"
+  style.stroke: "#23756E"
+}
+
+training: "Контур разработки модели" {
+  direction: down
+  style.fill: "#F4F8FC"
+  style.stroke: "#B7D2E7"
+  style.stroke-width: 2
+
+  eda: "EDA и первичный контроль\n[реализовано]" {
+    style.fill: "#E1F1EC"
+    style.stroke: "#23756E"
+  }
+  split_xy: "Отделить customerID и Churn\nX — предикторы; y — цель\n[планируется]" {
+    style.fill: "#EAF2F8"
+    style.stroke: "#315A7D"
+  }
+  partition: "Стратифицированный split\nTrain / Validation / Test\n[планируется]" {
+    style.fill: "#EAF2F8"
+    style.stroke: "#315A7D"
+  }
+  fit: "Инжиниринг признаков\nfit преобразователей только на Train\n[планируется]" {
+    style.fill: "#DDF2E5"
+    style.stroke: "#23756E"
+  }
+  train: "Обучить baseline и кандидатов\nна Train\n[планируется]" {
+    style.fill: "#DDF2E5"
+    style.stroke: "#23756E"
+  }
+  select: "Выбрать модель по Validation\nи зафиксировать параметры\n[планируется]" {
+    shape: diamond
+    style.fill: "#FFF0D5"
+    style.stroke: "#B8892E"
+  }
+  test: "Однократная итоговая оценка\nна независимом Test\n[планируется]" {
+    style.fill: "#EAF2F8"
+    style.stroke: "#315A7D"
+  }
+  bundle: "Сохранить model bundle,\nсхему, seed и метрики\n[планируется]" {
+    shape: cylinder
+    style.fill: "#E9E1F8"
+    style.stroke: "#8265A5"
+  }
+
+  eda -> split_xy -> partition -> fit -> train -> select -> test -> bundle
+}
+
+inference: "Контур пакетного прогнозирования" {
+  direction: down
+  style.fill: "#F2F9F8"
+  style.stroke: "#B8DDD8"
+  style.stroke-width: 2
+
+  validate: "Проверить схему, типы, категории,\nпропуски, диапазоны и customerID\n[планируется]" {
+    style.fill: "#EAF2F8"
+    style.stroke: "#315A7D"
+  }
+  decision: "Пакет корректен?" {
+    shape: diamond
+    style.fill: "#FFF0D5"
+    style.stroke: "#B8892E"
+  }
+  reject: "Остановить обработку;\nсохранить отчёт об ошибках" {
+    style.fill: "#FBE2E2"
+    style.stroke: "#B7473E"
+  }
+  load: "Загрузить сохранённый\nmodel bundle" {
+    style.fill: "#E9E1F8"
+    style.stroke: "#8265A5"
+  }
+  transform: "Применить сохранённые\nпреобразования без fit" {
+    style.fill: "#DDF2E5"
+    style.stroke: "#23756E"
+  }
+  predict: "Рассчитать класс и вероятность\nоттока; customerID — отдельно" {
+    style.fill: "#DDF2E5"
+    style.stroke: "#23756E"
+  }
+  output: "Сохранить прогнозы и журнал\nобработки пакета" {
+    shape: cylinder
+    style.fill: "#E9E1F8"
+    style.stroke: "#8265A5"
+  }
+  delayed: "После появления фактических меток:\nоценить качество прогноза" {
+    style.fill: "#EAF2F8"
+    style.stroke: "#315A7D"
+  }
+
+  validate -> decision
+  decision -> reject: "нет"
+  decision -> load: "да"
+  load -> transform -> predict -> output -> delayed
+}
+
+raw -> split: "исходные данные"
+split -> initial: "начальная выборка"
+split -> incoming: "4 пакета"
+initial -> training.eda
+incoming -> inference.validate
+training.bundle -> inference.load: "сохранённый артефакт"
+
+constraint_note: "Важно: initial_60 используется для разработки модели; incoming-пакеты не подмешиваются в Train/Validation/Test. Даты реального поступления в статическом наборе не подтверждены." {
+  shape: rectangle
+  style.fill: "#FFF9E8"
+  style.stroke: "#D1B56E"
+}
+raw -> constraint_note: "ограничение данных"
