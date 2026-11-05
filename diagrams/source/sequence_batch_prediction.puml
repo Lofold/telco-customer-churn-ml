@@ -1,37 +1,53 @@
-@startuml
-' Target UML Sequence: batch prediction after the ML pipeline is implemented
+@startuml sequence_batch_prediction
 title Целевой сценарий пакетного прогнозирования
 
 autonumber
 hide footbox
-skinparam backgroundColor #FFFFFF
-skinparam shadowing false
-skinparam roundcorner 10
-skinparam defaultFontName Arial
-skinparam defaultFontSize 13
-skinparam sequence {
-  ArrowColor #496779
-  LifeLineBorderColor #8A9BA8
-  LifeLineBackgroundColor #F5F8FA
-  ParticipantBorderColor #315A7D
-  ParticipantBackgroundColor #EAF2F8
-  ParticipantFontColor #172B3A
-  ActorBorderColor #526579
-  ActorFontColor #263746
-  GroupBorderColor #9AAAB6
-  GroupBackgroundColor #F7F9FB
-}
 
-actor "Специалист по данным" as Analyst
+' Базовые настройки для надежности
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+
+' Современный стиль
+<style>
+sequenceDiagram {
+  arrow {
+    LineThickness 1.5
+    LineColor #17324D
+  }
+  lifeLine {
+    LineThickness 1.5
+    LineColor #64788B
+  }
+  participant {
+    BorderColor #315A7D
+    BackgroundColor #EAF2F8
+    FontColor #172B3A
+  }
+  actor {
+    BorderColor #526579
+    BackgroundColor #FFFFFF
+    FontColor #263746
+  }
+  group {
+    BorderColor #9AAAB6
+    BackgroundColor #F7F9FB
+  }
+}
+</style>
+
+actor "Специалист по данным\n/ ML-разработчик" as Analyst
 participant "CLI\npredict_batch.py\n[планируется]" as CLI
 collections "Входящий CSV\ndata/incoming/" as Input
-participant "Валидатор схемы\nи качества" as Validator
+participant "Валидатор и\nнормализатор" as Validator
 database "Артефакт модели\nmodels/model_bundle.joblib" as Artifact
 participant "Обученный sklearn\nPipeline" as Pipeline
 database "Хранилище результатов\nreports/" as Results
 
 Analyst -> CLI: Запуск с указанием входного пакета
 activate CLI
+
 CLI -> Input: Прочитать CSV
 Input --> CLI: Таблица входных записей
 CLI -> CLI: Сохранить customerID отдельно
@@ -71,8 +87,6 @@ end
 deactivate CLI
 
 note over Analyst,Results
-  Диаграмма описывает целевое поведение, а не текущую реализацию.
-  Если фактический Churn появится позднее, его используют только
-  для отложенной оценки — не как входной предиктор.
+  Диаграмма описывает целевое поведение, а не текущую реализацию. Если фактический Churn появится позднее, его используют только для отложенной оценки — не как входной предиктор.
 end note
 @enduml

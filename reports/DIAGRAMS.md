@@ -4,28 +4,28 @@
 
 ## Архитектура C4 — Structurizr DSL
 
-| Представление | Исходник | SVG | PNG |
-|---|---|---|---|
-| C4 System Landscape | [`diagrams/workspace.dsl`](../diagrams/workspace.dsl), view `landscape` | [`c4_landscape.svg`](../diagrams/svg/c4_landscape.svg) | [`c4_landscape.png`](../diagrams/png/c4_landscape.png) |
-| C4 System Context | [`diagrams/workspace.dsl`](../diagrams/workspace.dsl), view `context` | [`c4_context.svg`](../diagrams/svg/c4_context.svg) | [`c4_context.png`](../diagrams/png/c4_context.png) |
-| C4 Container | [`diagrams/workspace.dsl`](../diagrams/workspace.dsl), view `containers` | [`c4_containers.svg`](../diagrams/svg/c4_containers.svg) | [`c4_containers.png`](../diagrams/png/c4_containers.png) |
+| Представление       | Исходник                                                                 | SVG                                                      | PNG                                                      |
+| ------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------- | -------------------------------------------------------- |
+| C4 System Landscape | [`diagrams/workspace.dsl`](../diagrams/workspace.dsl), view `landscape`  | [`c4_landscape.svg`](../diagrams/svg/c4_landscape.svg)   | [`c4_landscape.png`](../diagrams/png/c4_landscape.png)   |
+| C4 System Context   | [`diagrams/workspace.dsl`](../diagrams/workspace.dsl), view `context`    | [`c4_context.svg`](../diagrams/svg/c4_context.svg)       | [`c4_context.png`](../diagrams/png/c4_context.png)       |
+| C4 Container        | [`diagrams/workspace.dsl`](../diagrams/workspace.dsl), view `container`  | [`c4_container.svg`](../diagrams/svg/c4_container.svg)   | [`c4_container.png`](../diagrams/png/c4_container.png)   |
 
-*Примечание: файлы `*-key.svg` и `*-key.png` в папках экспорта являются отдельными легендами к C4-диаграммам.*
+_Примечание: файлы `_-key.svg`и`_-key.png` в папках экспорта являются отдельными легендами к C4-диаграммам._
 
 ## UML — PlantUML
 
-| Диаграмма | Исходник | SVG | PNG |
-|---|---|---|---|
-| Use Case | [`use_case.puml`](../diagrams/source/use_case.puml) | [`use_case.svg`](../diagrams/svg/use_case.svg) | [`use_case.png`](../diagrams/png/use_case.png) |
-| Sequence — пакетное прогнозирование | [`sequence_batch_prediction.puml`](../diagrams/source/sequence_batch_prediction.puml) | [`sequence_batch_prediction.svg`](../diagrams/svg/sequence_batch_prediction.svg) | [`sequence_batch_prediction.png`](../diagrams/png/sequence_batch_prediction.png) |
-| Activity — реализованный процесс подготовки данных и EDA | [`ml_pipeline_activity.puml`](../diagrams/source/ml_pipeline_activity.puml) | [`ml_pipeline_activity.svg`](../diagrams/svg/ml_pipeline_activity.svg) | [`ml_pipeline_activity.png`](../diagrams/png/ml_pipeline_activity.png) |
+| Диаграмма                                                | Исходник                                                                              | SVG                                                                              | PNG                                                                              |
+| -------------------------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Use Case                                                 | [`use_case.puml`](../diagrams/source/use_case.puml)                                   | [`use_case.svg`](../diagrams/svg/use_case.svg)                                   | [`use_case.png`](../diagrams/png/use_case.png)                                   |
+| Sequence — пакетное прогнозирование                      | [`sequence_batch_prediction.puml`](../diagrams/source/sequence_batch_prediction.puml) | [`sequence_batch_prediction.svg`](../diagrams/svg/sequence_batch_prediction.svg) | [`sequence_batch_prediction.png`](../diagrams/png/sequence_batch_prediction.png) |
+| Activity — реализованный процесс подготовки данных и EDA | [`ml_pipeline_activity.puml`](../diagrams/source/ml_pipeline_activity.puml)           | [`ml_pipeline_activity.svg`](../diagrams/svg/ml_pipeline_activity.svg)           | [`ml_pipeline_activity.png`](../diagrams/png/ml_pipeline_activity.png)           |
 
 ## Архитектурные и процессные схемы — D2
 
-| Диаграмма | Исходник | SVG | PNG |
-|---|---|---|---|
-| ML pipeline — целевой контур обучения и пакетного прогнозирования | [`ml_pipeline.d2`](../diagrams/source/ml_pipeline.d2) | [`ml_pipeline.svg`](../diagrams/svg/ml_pipeline.svg) | [`ml_pipeline.png`](../diagrams/png/ml_pipeline.png) |
-| Логическая архитектура системы (Приложение Б) | [`system_architecture.d2`](../diagrams/source/system_architecture.d2) | [`system_architecture.svg`](../diagrams/svg/system_architecture.svg) | [`system_architecture.png`](../diagrams/png/system_architecture.png) |
+| Диаграмма                                                         | Исходник                                                              | SVG                                                                  | PNG                                                                  |
+| ----------------------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| ML pipeline — целевой контур обучения и пакетного прогнозирования | [`ml_pipeline.d2`](../diagrams/source/ml_pipeline.d2)                 | [`ml_pipeline.svg`](../diagrams/svg/ml_pipeline.svg)                 | [`ml_pipeline.png`](../diagrams/png/ml_pipeline.png)                 |
+| Логическая архитектура системы                                    | [`system_architecture.d2`](../diagrams/source/system_architecture.d2) | [`system_architecture.svg`](../diagrams/svg/system_architecture.svg) | [`system_architecture.png`](../diagrams/png/system_architecture.png) |
 
 ## Правила интерпретации
 

@@ -6,7 +6,7 @@ workspace "Telco Customer Churn ML" "C4 model for the local batch-oriented custo
     model {
         analyst = person "Специалист по данным" "Запускает сценарии подготовки данных и EDA, проверяет отчёты."
 
-        sourceData = softwareSystem "Датасет Telco Churn" "Статический CSV-источник. Имитация поступления пакетов." {
+        sourceData = softwareSystem "Датасет Telco Churn" "Статический CSV-источник. Имитация поступления пакетов." "CSV, статический источник" {
             tags "External, Data Source"
         }
 
@@ -14,7 +14,7 @@ workspace "Telco Customer Churn ML" "C4 model for the local batch-oriented custo
             tags "External, Development Tool"
         }
 
-        churnSystem = softwareSystem "ML-система оттока" "Локальное пакетное Python-приложение. Подготовка данных и EDA реализованы. Обучение и прогноз — в планах." {
+        churnSystem = softwareSystem "Система анализа и прогнозирования оттока клиентов" "Локальное пакетное Python-приложение. Подготовка данных и EDA реализованы. Обучение и прогноз — в планах." {
             !docs documentation
             !adrs decisions
 
@@ -26,7 +26,7 @@ workspace "Telco Customer Churn ML" "C4 model for the local batch-oriented custo
                 tags "Data Store, Partially Implemented"
             }
 
-            artifactsStore = container "Хранилище артефактов" "Отчёты, графики, манифест. Модели и прогнозы будут добавлены позже." "Файловая система / CSV, JSON, PNG" {
+            artifactsStore = container "Хранилище результатов и моделей" "Отчёты, графики, манифест. Модели и прогнозы будут добавлены позже." "Файловая система / CSV, JSON, PNG" {
                 tags "Artifacts, Partially Implemented"
             }
         }
@@ -54,7 +54,7 @@ workspace "Telco Customer Churn ML" "C4 model for the local batch-oriented custo
             autoLayout lr
         }
 
-        container churnSystem "containers" "Внутренние контейнеры приложения" {
+        container churnSystem "container" "Внутренние контейнеры приложения" {
             include *?
             exclude gitHub
             autoLayout lr
@@ -67,6 +67,7 @@ workspace "Telco Customer Churn ML" "C4 model for the local batch-oriented custo
                 strokeWidth 2
                 shape roundedbox
                 metadata true
+                description false
             }
             element "Person" {
                 background #526579
@@ -99,7 +100,7 @@ workspace "Telco Customer Churn ML" "C4 model for the local batch-oriented custo
                 background #F0B35D
                 color #263746
                 stroke #A77B22
-                shape folder
+                shape roundedbox
             }
             element "Development Tool" {
                 background #E8EDF2

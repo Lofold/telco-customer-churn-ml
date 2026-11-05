@@ -1,5 +1,4 @@
-@startuml
-' UML Activity: actual implemented workflow for data preparation and EDA
+@startuml ml_pipeline_activity
 title Реализованный процесс подготовки данных и EDA
 skinparam backgroundColor #FFFFFF
 skinparam shadowing false
@@ -10,8 +9,8 @@ skinparam activity {
   BackgroundColor #EAF2F8
   BorderColor #315A7D
   FontColor #172B3A
-  DiamondBackgroundColor #FFF1CC
-  DiamondBorderColor #9A7620
+  DiamondBackgroundColor #FFF2D8
+  DiamondBorderColor #B8892E
   StartColor #23756E
   EndColor #B7473E
   BarColor #496779

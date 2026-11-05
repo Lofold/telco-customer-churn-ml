@@ -4,7 +4,7 @@ $repoRoot = Split-Path -Parent $PSScriptRoot
 $names = @(
     'c4_landscape',
     'c4_context',
-    'c4_containers',
+    'c4_container',
     'use_case',
     'sequence_batch_prediction',
     'ml_pipeline_activity',
